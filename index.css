@@ -386,3 +386,55 @@ input[type="text"], select {
 ::-webkit-scrollbar-thumb:hover {
   background: #10B981;
 }
+
+
+/* ==========================================================================
+   DESIGN LANGUAGE 3: DEVELOPER TERMINAL & IDE SYSTEM
+   Font: JetBrains Mono | Geometry: 4px Hard Edge | Palette: VS Code Dark & Neon Green
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-dark: #0D1117;
+  --bg-card: #161B22;
+  --bg-card-hover: #21262D;
+  --border-color: #30363D;
+  --border-highlight: #8B949E;
+  --primary-emerald: #3FB950;
+  --primary-cyan: #58A6FF;
+  --text-main: #C9D1D9;
+  --text-muted: #8B949E;
+  --font-heading: 'JetBrains Mono', monospace;
+  --font-body: 'JetBrains Mono', monospace;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+}
+
+body {
+  background-color: #090C10;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.calc-inputs-card, .calc-results-card, .metric-card, .rec-card, .faq-item {
+  border-radius: 4px !important;
+  border: 1px solid #30363D !important;
+  box-shadow: none !important;
+}
+
+.card-header h2::before {
+  content: '$ ';
+  color: #3FB950;
+}
+
+.btn-primary, .btn-secondary, .preset-btn, .rec-cta {
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: lowercase;
+}
+
+.btn-primary {
+  background: #238636 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #2EA043 !important;
+}
