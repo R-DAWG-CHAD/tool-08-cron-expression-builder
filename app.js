@@ -171,3 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateCron();
 });
+
+// Global Toast Notification Helper
+window.showToast = function(message) {
+  let toast = document.getElementById('globalToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'globalToast';
+    toast.style.cssText = 'position:fixed;bottom:24px;right:24px;background:rgba(16,185,129,0.95);color:#000;padding:12px 20px;border-radius:10px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:9999;transition:all 0.3s ease;transform:translateY(100px);opacity:0;backdrop-filter:blur(10px);';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.transform = 'translateY(0)';
+  toast.style.opacity = '1';
+  setTimeout(() => {
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
+  }, 3000);
+};
