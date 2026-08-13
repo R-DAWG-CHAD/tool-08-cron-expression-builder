@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cron Expression Generator & Schedule Translator | Zero-Login Free Tool</title>
+  <meta name="description" content="Generate and translate 5-field crontab expressions into plain English. Preview next 10 upcoming execution timestamps, visual schedule picker, and command snippet builder.">
+  <meta name="keywords" content="cron expression generator, cron schedule builder, crontab translator, cron next execution times, visual cron builder, devops cron tool">
+  <link rel="canonical" href="https://crongenerator.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crongenerator.app/">
+  <meta property="og:title" content="Cron Expression Generator & Human Schedule Translator">
+  <meta property="og:description" content="Build visual cron schedules, translate expressions to plain English, and calculate upcoming execution times.">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cron Expression Generator & Translator",
+    "url": "https://crongenerator.app/",
+    "description": "Zero-login DevOps tool for generating and translating crontab expressions into human-readable schedules.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon">⏰</span>
+      <span class="title">Cron Matrix</span>
+    </div>
+    <div class="badge">DevOps Grade & Zero-Login</div>
+  </header>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Cron Expression Generator & Human Translator</h1>
+      <p>Build, translate, and inspect crontab schedules visually. Convert raw 5-field cron strings into plain English and preview the next 10 upcoming execution timestamps.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Left Panel: Interactive Visual Builder -->
+      <section class="card glass-panel">
+        <h2><span class="step-num">1</span> Interactive Schedule Builder</h2>
+
+        <div class="form-group">
+          <label for="frequencyPreset">Preset Frequencies</label>
+          <select id="frequencyPreset">
+            <option value="*/5 * * * *">Every 5 Minutes (*/5 * * * *)</option>
+            <option value="0 * * * *">Every Hour at Minute 0 (0 * * * *)</option>
+            <option value="0 0 * * *">Every Day at Midnight (0 0 * * *)</option>
+            <option value="0 9 * * 1-5" selected>Every Weekday at 9:00 AM (0 9 * * 1-5)</option>
+            <option value="0 0 1 * *">First Day of Every Month at Midnight (0 0 1 * *)</option>
+            <option value="0 3 * * 0">Every Sunday at 3:00 AM (0 3 * * 0)</option>
+          </select>
+        </div>
+
+        <div class="cron-field-grid margin-top">
+          <div class="form-group">
+            <label for="fieldMinute">Minute (0 - 59)</label>
+            <input type="text" id="fieldMinute" value="0">
+          </div>
+          <div class="form-group">
+            <label for="fieldHour">Hour (0 - 23)</label>
+            <input type="text" id="fieldHour" value="9">
+          </div>
+          <div class="form-group">
+            <label for="fieldDayMonth">Day of Month (1 - 31)</label>
+            <input type="text" id="fieldDayMonth" value="*">
+          </div>
+          <div class="form-group">
+            <label for="fieldMonth">Month (1 - 12)</label>
+            <input type="text" id="fieldMonth" value="*">
+          </div>
+          <div class="form-group">
+            <label for="fieldDayWeek">Day of Week (0 - 6)</label>
+            <input type="text" id="fieldDayWeek" value="1-5">
+          </div>
+        </div>
+
+        <h2><span class="step-num">2</span> Shell Command Snippet</h2>
+        <div class="form-group">
+          <label for="commandInput">Executable Shell Command</label>
+          <input type="text" id="commandInput" value="/usr/bin/python3 /var/www/scripts/backup.py">
+        </div>
+      </section>
+
+      <!-- Right Panel: Translated Output & Upcoming Schedule -->
+      <section class="card glass-panel results-section">
+        <h2>Crontab Output & Schedule</h2>
+
+        <div class="highlight-box">
+          <span class="highlight-label">Generated Cron Expression</span>
+          <div class="highlight-value code-font" id="cronExpressionDisplay">0 9 * * 1-5</div>
+          <button id="btnCopyCron" class="btn btn-sm margin-top">📋 Copy Cron Expression</button>
+        </div>
+
+        <div class="translation-card">
+          <span class="trans-label">Plain English Translation:</span>
+          <div class="trans-text" id="humanTranslation">At 09:00 AM, Monday through Friday</div>
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="crontabLine">Complete Crontab Line</label>
+          <div class="input-wrapper">
+            <input type="text" id="crontabLine" readonly class="code-font" value="0 9 * * 1-5 /usr/bin/python3 /var/www/scripts/backup.py">
+            <button id="btnCopyLine" class="btn btn-sm btn-accent suffix-btn">Copy Line</button>
+          </div>
+        </div>
+
+        <!-- Next 10 Executions Preview -->
+        <div class="upcoming-box margin-top">
+          <h3>📅 Next 5 Upcoming Execution Times</h3>
+          <ul id="executionList" class="execution-list">
+            <!-- Dynamically populated execution timestamps -->
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- SEO Informational Article Section -->
+    <article class="card glass-panel seo-content">
+      <h2>Understanding Crontab Syntax and Wildcards</h2>
+      <p>Cron is a time-based job scheduler utility in Unix-like operating systems. System administrators and developers use crontab files to automate recurring maintenance tasks, database backups, email notifications, and data pipelines.</p>
+
+      <h3>Crontab Field Order Structure:</h3>
+      <div class="code-block">
+        <code>*  *  *  *  *  command_to_execute</code><br>
+        <code>│  │  │  │  └─── Day of Week (0 - 6) (Sunday=0)</code><br>
+        <code>│  │  │  └────── Month (1 - 12)</code><br>
+        <code>│  │  └───────── Day of Month (1 - 31)</code><br>
+        <code>│  └──────────── Hour (0 - 23)</code><br>
+        <code>└─────────────── Minute (0 - 59)</code>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Cron Matrix. Free Zero-Login DevOps Utility.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
